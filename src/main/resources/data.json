@@ -1,0 +1,122 @@
+[
+  {
+    "username": "user12345",
+    "email": "user1@example.com",
+    "password": "password123",
+    "avatar": "https://example.com/avatar1.png",
+    "display_name": "User1",
+    "gender": "Male",
+    "created_datetime": "2025-01-01T10:00:00",
+    "updated_datetime": "2025-01-05T15:30:00",
+    "is_activated": true,
+    "is_deleted": false
+  },
+  {
+    "username": "flowergirl",
+    "email": "flower@example.com",
+    "password": "flw$2024",
+    "avatar": null,
+    "display_name": "Flower",
+    "gender": "Female",
+    "created_datetime": "2024-12-20T08:45:00",
+    "updated_datetime": "2025-01-10T11:15:00",
+    "is_activated": true,
+    "is_deleted": false
+  },
+  {
+    "username": "tech_guy",
+    "email": "techguy@example.net",
+    "password": "tech@world",
+    "avatar": "https://example.com/avatar3.jpg",
+    "display_name": "Techie",
+    "gender": "Other",
+    "created_datetime": "2023-11-15T09:00:00",
+    "updated_datetime": "2024-02-01T10:00:00",
+    "is_activated": false,
+    "is_deleted": true
+  },
+  {
+    "username": "natureLover",
+    "email": "naturelover@domain.com",
+    "password": "nature_is_life",
+    "avatar": null,
+    "display_name": "Nature",
+    "gender": "Female",
+    "created_datetime": "2025-01-10T12:30:00",
+    "updated_datetime": "2025-01-15T12:30:00",
+    "is_activated": false,
+    "is_deleted": false
+  },
+  {
+    "username": "super_admin",
+    "email": "admin@example.org",
+    "password": "adm!n2025",
+    "avatar": "https://example.com/admin.png",
+    "display_name": "Admin",
+    "gender": "Male",
+    "created_datetime": "2021-05-01T10:00:00",
+    "updated_datetime": "2025-01-10T10:30:00",
+    "is_activated": true,
+    "is_deleted": false
+  },
+  {
+    "username": "jane_doe92",
+    "email": "jane92@gmail.com",
+    "password": "Jane@92",
+    "avatar": null,
+    "display_name": "Jane",
+    "gender": "Female",
+    "created_datetime": "2024-07-15T13:00:00",
+    "updated_datetime": "2024-12-31T18:00:00",
+    "is_activated": true,
+    "is_deleted": false
+  },
+  {
+    "username": "coderlife",
+    "email": "coder@dev.com",
+    "password": "Code@123",
+    "avatar": "https://example.com/coder.png",
+    "display_name": "CodeMaster",
+    "gender": "Other",
+    "created_datetime": "2023-03-05T09:20:00",
+    "updated_datetime": "2023-08-19T14:50:00",
+    "is_activated": false,
+    "is_deleted": true
+  },
+  {
+    "username": "artistX",
+    "email": "artist@example.com",
+    "password": "ArtIsLife",
+    "avatar": "https://example.com/art.jpg",
+    "display_name": "Artist",
+    "gender": "Other",
+    "created_datetime": "2022-06-25T16:40:00",
+    "updated_datetime": "2024-06-01T08:00:00",
+    "is_activated": true,
+    "is_deleted": false
+  },
+  {
+    "username": "travel_bug",
+    "email": "travelbug@world.com",
+    "password": "T@ravel2025",
+    "avatar": null,
+    "display_name": "Traveler",
+    "gender": "Female",
+    "created_datetime": "2025-01-05T08:00:00",
+    "updated_datetime": "2025-01-15T14:30:00",
+    "is_activated": false,
+    "is_deleted": false
+  },
+  {
+    "username": "gamer123",
+    "email": "gamer123@example.org",
+    "password": "Game@Play",
+    "avatar": "https://example.com/gamer.png",
+    "display_name": "Gamer",
+    "gender": "Male",
+    "created_datetime": "2024-12-15T10:10:00",
+    "updated_datetime": "2025-01-10T20:15:00",
+    "is_activated": true,
+    "is_deleted": true
+  }
+]
