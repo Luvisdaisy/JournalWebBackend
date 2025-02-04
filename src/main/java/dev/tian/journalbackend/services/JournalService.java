@@ -52,7 +52,7 @@ public class JournalService
      */
     public Page<Journal> getJournalsByUsername(Pageable pageable, String username)
     {
-        return journalRepository.findAllByUsername(pageable, username);
+        return journalRepository.findByAuthorUsername(pageable, username);
     }
 
     /**
@@ -108,9 +108,9 @@ public class JournalService
         {
             updatedJournal.setContent(journal.getContent());
         }
-        if (!journal.getUserAvatar().equals(existingJournal.get().getUserAvatar()))
+        if (!journal.getAuthor().getAvatar().equals(existingJournal.get().getAuthor().getAvatar()))
         {
-            updatedJournal.setUserAvatar(journal.getUserAvatar());
+            updatedJournal.getAuthor().setAvatar(journal.getAuthor().getAvatar());
         }
         updatedJournal.setUpdatedDatetime(LocalDateTime.now());
         return journalRepository.save(updatedJournal);
@@ -206,6 +206,6 @@ public class JournalService
     {
         List<SimpleUser> friends = userRelationshipRepository.findByUsername(username).getFriends();
         List<String> friendUsernames = friends.stream().map(SimpleUser::getUsername).toList();
-        return journalRepository.findAllByUsernameIn(pageable, friendUsernames);
+        return journalRepository.findAllByAuthor_UsernameIn(pageable, friendUsernames);
     }
 }

@@ -30,11 +30,8 @@ public class Journal
     @Field(name = "content")
     private String content;
 
-    @Field(name = "username")
-    private String username;
-
-    @Field(name="userAvatar")
-    private String userAvatar;
+    @Field
+    private SimpleUser author;
 
     @Field(name = "likes")
     private List<String> likes;

@@ -11,9 +11,11 @@ public interface JournalRepository extends MongoRepository<Journal, String>
 {
 
 
-    Page<Journal> findAllByUsername(Pageable pageable, String username);
+//    Page<Journal> findAllByUsername(Pageable pageable, String username);
 
-    Page<Journal> findAllByUsernameIn(Pageable pageable, List<String> friendUsernames);
+    Page<Journal> findByAuthorUsername(Pageable pageable, String username);
+
+    Page<Journal> findAllByAuthor_UsernameIn(Pageable pageable, List<String> friendUsernames);
 
     List<Journal> findByTitleContainingOrContentContaining(String keywords, String keywords1);
 }
