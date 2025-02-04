@@ -108,6 +108,10 @@ public class JournalService
         {
             updatedJournal.setContent(journal.getContent());
         }
+        if (!journal.getUserAvatar().equals(existingJournal.get().getUserAvatar()))
+        {
+            updatedJournal.setUserAvatar(journal.getUserAvatar());
+        }
         updatedJournal.setUpdatedDatetime(LocalDateTime.now());
         return journalRepository.save(updatedJournal);
     }

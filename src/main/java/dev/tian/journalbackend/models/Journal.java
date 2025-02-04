@@ -33,6 +33,9 @@ public class Journal
     @Field(name = "username")
     private String username;
 
+    @Field(name="userAvatar")
+    private String userAvatar;
+
     @Field(name = "likes")
     private List<String> likes;
 
