@@ -9,9 +9,7 @@ import java.util.List;
 
 public interface JournalRepository extends MongoRepository<Journal, String>
 {
-
-
-//    Page<Journal> findAllByUsername(Pageable pageable, String username);
+    Page<Journal> findAllByIsDeletedFalse(Pageable pageable);
 
     Page<Journal> findByAuthorUsername(Pageable pageable, String username);
 

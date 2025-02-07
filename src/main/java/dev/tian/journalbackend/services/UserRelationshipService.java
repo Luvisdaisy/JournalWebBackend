@@ -63,16 +63,27 @@ public class UserRelationshipService
         try
         {
             UserRelationship userRelationship = userRelationshipRepository.findByUsername(username);
-            if (userRelationship == null)
+            UserRelationship targetUserRelationship = userRelationshipRepository.findByUsername(targetUsername);
+            if (userRelationship == null || targetUserRelationship == null)
             {
                 throw new UsernameNotFoundException("User relationship not found for: " + username);
             }
 
-            User targetUser = userRepository.findByUsername(targetUsername).orElseThrow(() -> new UsernameNotFoundException("Target user not found"));
-            SimpleUser simpleUser = new SimpleUser(targetUser.getUsername(), targetUser.getDisplayName(), targetUser.getAvatar());
-            userRelationship.getFollowing().add(simpleUser);
+            User user = userRepository.findByUsername(username)
+                    .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+            User targetUser = userRepository.findByUsername(targetUsername)
+                    .orElseThrow(() -> new UsernameNotFoundException("Target user not found"));
+
+            SimpleUser simpleUser = new SimpleUser(user.getUsername(), user.getDisplayName(), user.getAvatar());
+            SimpleUser simpleTargetUser = new SimpleUser(targetUser.getUsername(),
+                                                         targetUser.getDisplayName(),
+                                                         targetUser.getAvatar()
+            );
+            userRelationship.getFollowing().add(simpleTargetUser);
+            targetUserRelationship.getFollowers().add(simpleUser);
 
             userRelationshipRepository.save(userRelationship);
+            userRelationshipRepository.save(targetUserRelationship);
         } catch (UsernameNotFoundException e)
         {
             throw new RuntimeException("User not found: " + e.getMessage());
@@ -90,18 +101,24 @@ public class UserRelationshipService
      *
      * @throws RuntimeException if an error occurs while unfollowing
      */
-    public void unFollowing(String username, String targetUsername)
+    public void delFollowing(String username, String targetUsername)
     {
+
+        System.out.println("delFollowing");
         try
         {
             UserRelationship userRelationship = userRelationshipRepository.findByUsername(username);
-            if (userRelationship == null)
+            UserRelationship targetUserRelationship = userRelationshipRepository.findByUsername(targetUsername);
+            if (userRelationship == null || targetUserRelationship == null)
             {
-                throw new UsernameNotFoundException("User relationship not found for: " + username);
+                throw new UsernameNotFoundException("User relationship not found");
             }
 
             userRelationship.getFollowing().removeIf(following -> following.getUsername().equals(targetUsername));
+            targetUserRelationship.getFollowers().removeIf(follower -> follower.getUsername().equals(username));
+
             userRelationshipRepository.save(userRelationship);
+            userRelationshipRepository.save(targetUserRelationship);
         } catch (Exception e)
         {
             throw new RuntimeException("Error while unfollowing: " + e.getMessage());
@@ -126,8 +143,12 @@ public class UserRelationshipService
                 throw new UsernameNotFoundException("User relationship not found for: " + username);
             }
 
-            User targetUser = userRepository.findByUsername(targetUsername).orElseThrow(() -> new UsernameNotFoundException("Target user not found"));
-            SimpleUser simpleUser = new SimpleUser(targetUser.getUsername(), targetUser.getDisplayName(), targetUser.getAvatar());
+            User targetUser = userRepository.findByUsername(targetUsername)
+                    .orElseThrow(() -> new UsernameNotFoundException("Target user not found"));
+            SimpleUser simpleUser = new SimpleUser(targetUser.getUsername(),
+                                                   targetUser.getDisplayName(),
+                                                   targetUser.getAvatar()
+            );
             userRelationship.getFollowers().add(simpleUser);
 
             userRelationshipRepository.save(userRelationship);
@@ -184,8 +205,12 @@ public class UserRelationshipService
                 throw new UsernameNotFoundException("User relationship not found for: " + username);
             }
 
-            User targetUser = userRepository.findByUsername(targetUsername).orElseThrow(() -> new UsernameNotFoundException("Target user not found"));
-            SimpleUser simpleUser = new SimpleUser(targetUser.getUsername(), targetUser.getDisplayName(), targetUser.getAvatar());
+            User targetUser = userRepository.findByUsername(targetUsername)
+                    .orElseThrow(() -> new UsernameNotFoundException("Target user not found"));
+            SimpleUser simpleUser = new SimpleUser(targetUser.getUsername(),
+                                                   targetUser.getDisplayName(),
+                                                   targetUser.getAvatar()
+            );
             userRelationship.getFriends().add(simpleUser);
 
             userRelationshipRepository.save(userRelationship);

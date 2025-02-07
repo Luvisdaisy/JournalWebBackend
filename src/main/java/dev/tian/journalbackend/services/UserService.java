@@ -77,7 +77,7 @@ public class UserService
         user.setGender("Other");
         user.setIsActivated(false);
         user.setIsDeleted(false);
-        user.setAvatar("src/assets/user.svg");
+        user.setAvatar("/assets/user.svg");
 
         initUserRelationship(user.getUsername());
         return userRepository.save(user);

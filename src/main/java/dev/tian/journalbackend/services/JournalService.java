@@ -31,15 +31,15 @@ public class JournalService
     }
 
     /**
-     * Retrieves all journals with pagination.
+     * Retrieves all journals that are not deleted with pagination.
      *
      * @param pageable Pagination and sorting information.
      *
-     * @return A page of journals.
+     * @return A page of journals where isDeleted is false.
      */
     public Page<Journal> getAllJournals(Pageable pageable)
     {
-        return journalRepository.findAll(pageable);
+        return journalRepository.findAllByIsDeletedFalse(pageable);
     }
 
     /**

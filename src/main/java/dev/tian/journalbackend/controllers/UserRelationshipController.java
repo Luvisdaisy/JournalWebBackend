@@ -99,7 +99,7 @@ public class UserRelationshipController
     {
         try
         {
-            userRelationshipService.unFollowing(username, targetUsername);
+            userRelationshipService.delFollowing(username, targetUsername);
             return ResponseEntity.accepted().body("Unfollow Success");
         } catch (Exception e)
         {
